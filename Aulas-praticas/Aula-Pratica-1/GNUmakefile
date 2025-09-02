@@ -72,10 +72,10 @@ all: $(ALL)
 aula01: $(AULA0101OBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0101OBJS)
 
-aula0101:
+aula0101: aula01
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
-.PHONY clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
+.PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
 
 clean-all:
 	rm -f *.o $(ALL) *-FreeBSD-* *-Linux-* *.core
