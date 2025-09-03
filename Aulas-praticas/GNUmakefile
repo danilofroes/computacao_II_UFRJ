@@ -55,10 +55,12 @@ CFLAGS = -Wall $(STANDARD)
 LFLAGS = -Wall
 
 AULA01 = aula0101
+AULA02 = aula0102
 
 AULA0101OBJS = aula0101.o
+AULA0102OBJS = aula0102.o
 
-EXECS = $(AULA01)
+EXECS = $(AULA01) $(AULA02)
 
 LIBS =
 
@@ -74,6 +76,12 @@ aula01: $(AULA0101OBJS)
 
 aula0101: aula01
 	cp -f $(AULA01) $(AULA01)-$(OS)-$(CC)-$(DIALECT)
+
+aula02: $(AULA0102OBJS)
+	$(LD) $(LFLAGS) -o $(AULA02) $(AULA0102OBJS)
+
+aula0102: aula02
+	cp -f $(AULA02) $(AULA02)-$(OS)-$(CC)-$(DIALECT)
 
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
 
