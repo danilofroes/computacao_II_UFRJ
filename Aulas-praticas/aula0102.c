@@ -20,7 +20,8 @@ int main() {
 	unsigned int i;
 
 	for (i = 0; i < 256; i++) {
-		printf("\e[38;5;%02Xm%3d", i, i);
+		printf("\e[38;5;%dm", i);
+		printf(" %02X", i);
 	}
 
 	printf("\e[0m\n");
