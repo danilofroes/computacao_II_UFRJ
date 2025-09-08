@@ -24,25 +24,27 @@ void ExibirCabecalho(unsigned short);
 void ExibirCabecalho(unsigned short numeroColunas) {
     unsigned short numeroLinhas;
 
-    if (numeroColunas >=1 && numeroColunas <= 9)
+    if (numeroColunas >= 1 && numeroColunas <= 9)
         numeroLinhas = 1;
 
     else if (numeroColunas >= 10 && numeroColunas <= 99)
         numeroLinhas = 2;
 
-    else if (numeroColunas >=100 && numeroColunas <= 999)
+    else if (numeroColunas >= 100 && numeroColunas <= 999)
         numeroLinhas = 3;
         
     else
         numeroLinhas = 4;
 
-    printf("%dm%dm", WHITE_BACKGROUND, BLACK);
+    printf("%s%s", WHITE_BACKGROUND, BLACK);
 
     unsigned short i;
     for (i = 0; i < numeroLinhas; i++) {
         unsigned short j;
+        
         for (j = 0; j < numeroColunas; j++) {
             unsigned short digito = (j / 10) % 10;
+            
             printf("%u", digito);
         }
         printf("\n");
@@ -50,28 +52,27 @@ void ExibirCabecalho(unsigned short numeroColunas) {
 
     for (i = 0; i < numeroColunas; i++) {
         unsigned short digito = i % 10;
+        
         printf("%u", digito);
     }
 
     printf("\n");
-
     printf("%s", RESET);
 }
 
 int main(int argc, char *argv[]) {
-    unsigned short numeroColunas;
 
-    if(argc != 2) {
-        printf("%dmErro: Uso incorreto.%s\n", BOLD_RED, RESET);
-        printf("Uso: %s <numero_colunas>\n", argv[0]);
+    if (argc != 2) {
+        printf("%sErro: O numero de argumentos passado esta invalido.%s\n", BOLD_HIGH_INTENSITY_RED, COLOR_RESET);
+        printf("Deve ser passado o valor do numero de colunas.\n");
         return 1;
     }
 
-    numeroColunas = (unsigned short)atoi(argv[1]);
+    unsigned short numeroColunas = atoi(argv[1]);
 
-    if(numeroColunas < 1 || numeroColunas > 200) {
-        printf("%dmErro: Numero de colunas invalido.%s\n", BOLD_RED, RESET);
-        printf("O numero de colunas deve estar entre 1 e 200.\n");
+    if (numeroColunas < 1 || numeroColunas > 9999) {
+        printf("%sErro: Numero de colunas invalido.%s\n", BOLD_HIGH_INTENSITY_RED, COLOR_RESET);
+        printf("O numero de colunas deve estar entre 1 e 9999.\n");
         return 1;
     }
 
