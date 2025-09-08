@@ -20,6 +20,7 @@
 #include "cores.h"
 
 void ExibirCabecalho(unsigned short);
+void ExibirHifens(unsigned short);
 
 void ExibirCabecalho(unsigned short numeroColunas) {
     unsigned short numeroLinhas;
@@ -60,6 +61,17 @@ void ExibirCabecalho(unsigned short numeroColunas) {
     printf("%s", RESET);
 }
 
+void ExibirHifens(unsigned short numeroHifens) {
+    unsigned short i;
+
+    printf("%s%s", BLACK_BACKGROUND, WHITE);
+
+    for (i = 0; i < numeroHifens; i++) {
+        printf("-");
+    }
+    printf("\n");
+}
+
 int main(int argc, char *argv[]) {
 
     if (argc != 2) {
@@ -77,6 +89,7 @@ int main(int argc, char *argv[]) {
     }
 
     ExibirCabecalho(numeroColunas);
+    ExibirHifens(numeroColunas);
 
     return 0;
 }
