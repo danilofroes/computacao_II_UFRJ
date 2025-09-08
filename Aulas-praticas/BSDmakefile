@@ -48,13 +48,15 @@ DEBUG =
 CFLAGS = -Wall $(STANDARD)
 LFLAGS = -Wall
 
-AULA01 = aula0101
-AULA02 = aula0102
+AULA0101 = aula0101
+AULA0102 = aula0102
+AULA0103 = aula0103
 
 AULA0101OBJS = aula0101.o
 AULA0102OBJS = aula0102.o
+AULA0103OBJS = aula0103.o
 
-EXECS = $(AULA01) $(AULA02)
+EXECS = $(AULA0101) $(AULA0102) $(AULA0103)
 
 LIBS =
 
@@ -65,17 +67,17 @@ ALL = $(EXECS) $(LIBS)
 
 all: $(ALL)
 
-aula01: $(AULA0101OBJS)
-	$(LD) $(LFLAGS) -o $(AULA01) $(AULA0101OBJS)
+aula0101: $(AULA0101OBJS)
+	$(LD) $(LFLAGS) -o $(AULA0101) $(AULA0101OBJS)
+	cp -f $(AULA0101) $(AULA0101)-$(OS)-$(CC)-$(DIALECT)
 
-aula0101: aula01
-	cp -f $(AULA01) $(AULA01)-$(OS)-$(CC)-$(DIALECT)
+aula0102: $(AULA0102OBJS)
+	$(LD) $(LFLAGS) -o $(AULA0102) $(AULA0102OBJS)
+	cp -f $(AULA0102) $(AULA0102)-$(OS)-$(CC)-$(DIALECT)
 
-aula02: $(AULA0102OBJS)
-	$(LD) $(LFLAGS) -o $(AULA02) $(AULA0102OBJS)
-
-aula0102: aula02
-	cp -f $(AULA02) $(AULA02)-$(OS)-$(CC)-$(DIALECT)
+aula0103: $(AULA0103OBJS)
+	$(LD) $(LFLAGS) -o $(AULA0103) $(AULA0103OBJS)
+	cp -f $(AULA0103) $(AULA0103)-$(OS)-$(CC)-$(DIALECT)
 
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
 
