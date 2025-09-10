@@ -37,7 +37,7 @@ void ExibirCabecalho(unsigned short numeroColunas) {
     else
         numeroLinhas = 4;
 
-    printf("%s%s", WHITE_BACKGROUND, BLACK);
+    printf("%s%s", BLACK, WHITE_BACKGROUND);
 
     unsigned short i;
     for (i = 0; i < numeroLinhas; i++) {
