@@ -61,14 +61,17 @@ AULA0104 = aula0104
 AULA0105 = aula0105
 AULA0106 = aula0106
 
+AULA02 = aula0202
+
 AULA0101OBJS = aula0101.o
 AULA0102OBJS = aula0102.o
 AULA0103OBJS = aula0103.o
 AULA0104OBJS = aula0104.o
 AULA0105OBJS = aula0105.o
 AULA0106OBJS = aula0106.o
+AULA0202AOBJS = aula0201a.o aula0202.o
 
-EXECS = $(AULA0101) $(AULA0102) $(AULA0103) $(AULA0104) $(AULA0105) $(AULA0106)
+EXECS = $(AULA0101) $(AULA0102) $(AULA0103) $(AULA0104) $(AULA0105) $(AULA0106) $(AULA02)
 
 LIBS =
 
@@ -102,6 +105,10 @@ aula0105: $(AULA0105OBJS)
 aula0106: $(AULA0106OBJS)
 	$(LD) $(LFLAGS) -o $(AULA0106) $(AULA0106OBJS)
 	cp -f $(AULA0106) $(AULA0106)-$(OS)-$(CC)-$(DIALECT)
+
+aula02: $(AULA0202AOBJS)
+	$(LD) $(LFLAGS) -o $(AULA02) $(AULA0202AOBJS)
+	cp -f $(AULA02) $(AULA02)-$(OS)-$(CC)-$(DIALECT)
 
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
 
