@@ -7,7 +7,7 @@
  * Autor: Danilo Davi Gomes Froes
  *
  * Descricao:
- * 	  --
+ * 	  codigo para gerar o maximo divisor comum (mdc) de dois numeros
  *
  * $Author$
  * $Date$
@@ -28,6 +28,7 @@
 #define NUMERO_ARGUMENTOS_INVALIDO                      1
 #define ARGUMENTO_COM_CARACTERE_INVALIDO                2
 #define VALOR_MAXIMO_UNSIGNED_LONG_LONG_EXCEDIDO        3
+#define MDC_DE_ZERO_E_ZERO_E_INDEFINIDO                 4
 
 #define EOS                                            '\0'
 
@@ -38,7 +39,7 @@ int main(int argc, char *argv[]) {
     char *validacaoY;
 
     if (argc != NUMERO_ARGUMENTOS + 1) {
-        printf("%s\nUso: %s.\n\n", RED, argv[0]);
+        printf("%s\nUso: %s <numero-1> <numero-2>.\n\n", RED, argv[0]);
 
         exit(NUMERO_ARGUMENTOS_INVALIDO);
     }
@@ -67,6 +68,11 @@ int main(int argc, char *argv[]) {
     if (*validacaoY != EOS) {
         printf("%s\nO argumento contem um caractere invalido (%c).\n\n", RED, *validacaoY);
         exit(ARGUMENTO_COM_CARACTERE_INVALIDO);
+    }
+
+    if (numeroX == 0 && numeroY == 0) {
+        printf("%s\nErro: MDC(0,0) e indefinido.\n\n", RED);
+        exit(MDC_DE_ZERO_E_ZERO_E_INDEFINIDO);
     }
 
     printf("%s\nMDC (%llu, %llu) = %llu\n\n", GREEN, numeroX, numeroY, CalcularMaximoDivisorComum(numeroX, numeroY));
