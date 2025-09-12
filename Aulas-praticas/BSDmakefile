@@ -16,7 +16,7 @@
 #
 ###############################################################################
 
-OS = FreeBSD
+OS = `uname -s`
 
 CC = gcc
 
@@ -48,12 +48,8 @@ DEBUG =
 CFLAGS = -Wall $(STANDARD)
 LFLAGS = -Wall
 
-AULA0101 = aula0101
-AULA0102 = aula0102
-AULA0103 = aula0103
-AULA0104 = aula0104
-AULA0105 = aula0105
-AULA0106 = aula0106
+AULA01 = aula0101 aula0102 aula0103 aula0104 aula0105 aula0106
+AULA02 = aula0202 aula0202a
 
 AULA0101OBJS = aula0101.o
 AULA0102OBJS = aula0102.o
@@ -62,7 +58,9 @@ AULA0104OBJS = aula0104.o
 AULA0105OBJS = aula0105.o
 AULA0106OBJS = aula0106.o
 
-EXECS = $(AULA0101) $(AULA0102) $(AULA0103) $(AULA0104) $(AULA0105) $(AULA0106)
+AULA0202AOBJS = aula0201a.o aula0202.o
+
+EXECS = $(AULA01) $(AULA02)
 
 LIBS =
 
@@ -73,29 +71,37 @@ ALL = $(EXECS) $(LIBS)
 
 all: $(ALL)
 
+aula01: $(AULA01)
+
 aula0101: $(AULA0101OBJS)
-	$(LD) $(LFLAGS) -o $(AULA0101) $(AULA0101OBJS)
-	cp -f $(AULA0101) $(AULA0101)-$(OS)-$(CC)-$(DIALECT)
+	$(LD) $(LFLAGS) -o $@ $(AULA0101OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0102: $(AULA0102OBJS)
-	$(LD) $(LFLAGS) -o $(AULA0102) $(AULA0102OBJS)
-	cp -f $(AULA0102) $(AULA0102)-$(OS)-$(CC)-$(DIALECT)
+	$(LD) $(LFLAGS) -o $@ $(AULA0102OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0103: $(AULA0103OBJS)
-	$(LD) $(LFLAGS) -o $(AULA0103) $(AULA0103OBJS)
-	cp -f $(AULA0103) $(AULA0103)-$(OS)-$(CC)-$(DIALECT)
+	$(LD) $(LFLAGS) -o $@ $(AULA0103OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0104: $(AULA0104OBJS)
-	$(LD) $(LFLAGS) -o $(AULA0104) $(AULA0104OBJS)
-	cp -f $(AULA0104) $(AULA0104)-$(OS)-$(CC)-$(DIALECT)
+	$(LD) $(LFLAGS) -o $@ $(AULA0104OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0105: $(AULA0105OBJS)
-	$(LD) $(LFLAGS) -o $(AULA0105) $(AULA0105OBJS)
-	cp -f $(AULA0105) $(AULA0105)-$(OS)-$(CC)-$(DIALECT)
+	$(LD) $(LFLAGS) -o $@ $(AULA0105OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 aula0106: $(AULA0106OBJS)
-	$(LD) $(LFLAGS) -o $(AULA0106) $(AULA0106OBJS)
-	cp -f $(AULA0106) $(AULA0106)-$(OS)-$(CC)-$(DIALECT)
+	$(LD) $(LFLAGS) -o $@ $(AULA0106OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula02: $(AULA02)
+
+aula0202a: $(AULA0202AOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0202AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
 
