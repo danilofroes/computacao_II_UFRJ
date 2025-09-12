@@ -7,7 +7,7 @@
  * Autor: Danilo Davi Gomes Froes
  *
  * Descricao:
- * 	  --
+ * 	  arquivo de definicao da funcao de calculo do maximo divisor comum (mdc)
  *
  * $Author$
  * $Date$
