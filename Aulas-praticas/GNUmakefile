@@ -55,7 +55,7 @@ CFLAGS = -Wall $(STANDARD) $(DEBUG)
 LFLAGS = -Wall
 
 AULA01 = aula0101 aula0102 aula0103 aula0104 aula0105 aula0106
-AULA02 = aula0202 aula0202a
+AULA02 = aula0202a
 
 AULA0101OBJS = aula0101.o
 AULA0102OBJS = aula0102.o
