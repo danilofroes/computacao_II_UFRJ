@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     char *validacaoY;
 
     if (argc != NUMERO_ARGUMENTOS + 1) {
-        printf("%s\nUso: %s <numero-1> <numero-2>.\n\n", RED, argv[0]);
+        printf("%s\nUso: %s <numero-1> <numero-2>.\n\n%s", RED, argv[0], RESET);
 
         exit(NUMERO_ARGUMENTOS_INVALIDO);
     }
@@ -48,12 +48,12 @@ int main(int argc, char *argv[]) {
     numeroX = strtoull(argv[1], &validacaoX, 10);
 
     if (errno == ERANGE) {
-        printf("%s\nValor maximo do tipo unsigned long long (%llu) foi excedido.\n\n", RED, ULLONG_MAX);
+        printf("%s\nValor maximo do tipo unsigned long long (%llu) foi excedido.\n\n%s", RED, ULLONG_MAX, RESET);
         exit(VALOR_MAXIMO_UNSIGNED_LONG_LONG_EXCEDIDO);
     }
 
     if (*validacaoX != EOS) {
-        printf("%s\nO argumento contem um caractere invalido (%c).\n\n", RED, *validacaoX);
+        printf("%s\nO argumento contem um caractere invalido (%c).\n\n%s", RED, *validacaoX, RESET);
         exit(ARGUMENTO_COM_CARACTERE_INVALIDO);
     }
 
@@ -61,21 +61,21 @@ int main(int argc, char *argv[]) {
     numeroY = strtoull(argv[2], &validacaoY, 10);
 
     if (errno == ERANGE) {
-        printf("%s\nValor maximo do tipo unsigned long long (%llu) foi excedido.\n\n", RED, ULLONG_MAX);
+        printf("%s\nValor maximo do tipo unsigned long long (%llu) foi excedido.\n\n%s", RED, ULLONG_MAX, RESET);
         exit(VALOR_MAXIMO_UNSIGNED_LONG_LONG_EXCEDIDO);
     }
 
     if (*validacaoY != EOS) {
-        printf("%s\nO argumento contem um caractere invalido (%c).\n\n", RED, *validacaoY);
+        printf("%s\nO argumento contem um caractere invalido (%c).\n\n%s", RED, *validacaoY, RESET);
         exit(ARGUMENTO_COM_CARACTERE_INVALIDO);
     }
 
     if (numeroX == 0 && numeroY == 0) {
-        printf("%s\nErro: MDC(0,0) e indefinido.\n\n", RED);
+        printf("%s\nErro: MDC(0,0) e indefinido.\n\n%s", RED, RESET);
         exit(MDC_DE_ZERO_E_ZERO_E_INDEFINIDO);
     }
 
-    printf("%s\nMDC (%llu, %llu) = %llu\n\n", GREEN, numeroX, numeroY, CalcularMaximoDivisorComum(numeroX, numeroY));
+    printf("%s\nMDC (%llu, %llu) = %llu\n\n%s", GREEN, numeroX, numeroY, CalcularMaximoDivisorComum(numeroX, numeroY), RESET);
 
     return OK;
 }
