@@ -49,7 +49,7 @@ CFLAGS = -Wall $(STANDARD)
 LFLAGS = -Wall
 
 AULA01 = aula0101 aula0102 aula0103 aula0104 aula0105 aula0106
-AULA02 = aula0202a
+AULA02 = aula0202a aula0202b
 
 AULA0101OBJS = aula0101.o
 AULA0102OBJS = aula0102.o
@@ -59,10 +59,14 @@ AULA0105OBJS = aula0105.o
 AULA0106OBJS = aula0106.o
 
 AULA0202AOBJS = aula0201a.o aula0202.o
+AULA0202BOBJS = aula0201b.o aula0202.o
+
+LIBMATEMATICARECURSAOOBJS = aula0201a.o
+LIBMATEMATICADOWHILEOBJS = aula0201b.o
 
 EXECS = $(AULA01) $(AULA02)
 
-LIBS =
+LIBS = libmatematica-recursao.a libmatematica-dowhile.a
 
 ALL = $(EXECS) $(LIBS)
 
@@ -102,6 +106,16 @@ aula02: $(AULA02)
 aula0202a: $(AULA0202AOBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0202AOBJS)
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0202b: $(AULA0202OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0202BOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
+	ar -r -c $@ $(LIBMATEMATICARECURSAOOBJS)
+
+libmatematica-dowhile.a: $(LIBMATEMATICADOWHILEOBJS)
+	ar -r -c $@ $(LIBMATEMATICADOWHILEOBJS)
 
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
 
