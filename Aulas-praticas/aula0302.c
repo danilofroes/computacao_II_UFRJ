@@ -1,0 +1,60 @@
+/*
+ * Universidade Federal do Rio de Janeiro
+ * Escola Politecnica
+ * Departamento de Eletronica e de Computacao
+ * EEL270 - Computacao II - Turma 2025/2
+ * Prof. Marcelo Luiz Drumond Lanza
+ * Autor: Danilo Davi Gomes Froes
+ *
+ * Descricao:
+ * 	  codigo principal para calcular o termo na serie de fibonacci
+ *
+ * $Author$
+ * $Date$
+ * $Log$
+ */
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+#include <errno.h>
+
+#include "aula0301.h"
+#include "cores.h"
+
+#define NUMERO_ARGUMENTOS                               1
+
+#define OK                                              0
+#define NUMERO_ARGUMENTOS_INVALIDO                      1
+#define ARGUMENTO_COM_CARACTERE_INVALIDO                2
+#define VALOR_MAXIMO_UNSIGNED_SHORT_EXCEDIDO        3
+
+#define EOS                                            '\0'
+
+int main(int argc, char *argv[]) {
+    us termo;
+    char *validacaoTermo;
+
+    if (argc != NUMERO_ARGUMENTOS + 1) {
+        printf("%s\nUso: %s <numero-1>.\n\n%s", RED, argv[0], RESET);
+
+        exit(NUMERO_ARGUMENTOS_INVALIDO);
+    }
+
+    errno = 0;
+    termo = strtous(argv[1], &validacaoTermo, 10);
+
+    if (errno == ERANGE) {
+        printf("%s\nValor maximo do tipo unsigned short (%hu) foi excedido.\n\n%s", RED, USHRT_MAX, RESET);
+        exit(VALOR_MAXIMO_UNSIGNED_SHORT_EXCEDIDO);
+    }
+
+    if (*validacaoTermo != EOS) {
+        printf("%s\nO argumento contem um caractere invalido (%c).\n\n%s", RED, *validacaoTermo, RESET);
+        exit(ARGUMENTO_COM_CARACTERE_INVALIDO);
+    }
+
+    return OK;
+}
+
+ /* $RCSfile$ */
