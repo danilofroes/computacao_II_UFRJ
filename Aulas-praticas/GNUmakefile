@@ -56,7 +56,7 @@ LFLAGS = -Wall
 
 AULA01 = aula0101 aula0102 aula0103 aula0104 aula0105 aula0106
 AULA02 = aula0202a aula0202b aula0202c aula0202d
-AULA03 = aula0302a aula0302b aula0302c
+AULA03 = aula0302a aula0302b aula0302c aula0302d
 
 AULA0101OBJS = aula0101.o
 AULA0102OBJS = aula0102.o
@@ -73,6 +73,7 @@ AULA0202DOBJS = aula0201d.o aula0202.o
 AULA0302AOBJS = aula0302.o aula0301a.o
 AULA0302BOBJS = aula0302.o aula0301b.o
 AULA0302COBJS = aula0302.o aula0301c.o
+AULA0302DOBJS = aula0302.o aula0301d.o
 
 LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o
 LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o
@@ -146,6 +147,10 @@ aula0302b: $(AULA0302BOBJS)
 
 aula0302c: $(AULA0302COBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0302COBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0302d: $(AULA0302DOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0302DOBJS)
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
