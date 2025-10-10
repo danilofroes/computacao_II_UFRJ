@@ -29,6 +29,7 @@ ull CalcularTermoSerieFibonacci(us termo) {
     ull termoAnterior;
     ull termoAtual;
     ull proximoTermo;
+    us contador;
     ull *ptrAnterior = &termoAnterior;
     ull *ptrAtual = &termoAtual;
     ull *ptrProximo = &proximoTermo;
@@ -39,7 +40,7 @@ ull CalcularTermoSerieFibonacci(us termo) {
     termoAnterior = 0;
     termoAtual = 1;
     
-    for (us i = 2; i <= termo; i++) {
+    for (contador = 2; contador <= termo; contador++) {
         if (ULLONG_MAX - *ptrAtual < *ptrAnterior)
             return ULLONG_MAX;
 
