@@ -27,24 +27,25 @@
 #define OK                                              0
 #define NUMERO_ARGUMENTOS_INVALIDO                      1
 #define ARGUMENTO_COM_CARACTERE_INVALIDO                2
-#define VALOR_MAXIMO_UNSIGNED_SHORT_EXCEDIDO        3
+#define VALOR_MAXIMO_UNSIGNED_SHORT_EXCEDIDO            3
+#define VALOR_MAXIMO_UNSIGNED_LONG_LONG_EXCEDIDO        4
 
 #define EOS                                            '\0'
 
 int main(int argc, char *argv[]) {
     us termo;
+    ull resultado;
     char *validacaoTermo;
 
     if (argc != NUMERO_ARGUMENTOS + 1) {
         printf("%s\nUso: %s <numero-1>.\n\n%s", RED, argv[0], RESET);
-
         exit(NUMERO_ARGUMENTOS_INVALIDO);
     }
 
     errno = 0;
-    termo = strtous(argv[1], &validacaoTermo, 10);
+    termo = (us)strtoul(argv[1], &validacaoTermo, 10);
 
-    if (errno == ERANGE) {
+    if (errno == ERANGE || termo == USHRT_MAX) {
         printf("%s\nValor maximo do tipo unsigned short (%hu) foi excedido.\n\n%s", RED, USHRT_MAX, RESET);
         exit(VALOR_MAXIMO_UNSIGNED_SHORT_EXCEDIDO);
     }
@@ -53,6 +54,15 @@ int main(int argc, char *argv[]) {
         printf("%s\nO argumento contem um caractere invalido (%c).\n\n%s", RED, *validacaoTermo, RESET);
         exit(ARGUMENTO_COM_CARACTERE_INVALIDO);
     }
+
+    resultado = CalcularTermoSerieFibonacci(termo);
+
+    if (resultado == ULLONG_MAX) {
+        printf("%s\nValor maximo do tipo unsigned long long (%llu) foi excedido.\n\n%s", RED, ULLONG_MAX, RESET);
+        exit(VALOR_MAXIMO_UNSIGNED_LONG_LONG_EXCEDIDO);
+    }
+
+    printf("%s%s\nF (%hu) = %llu\n\n%s", WHITE_BACKGROUND, BLACK, termo, resultado, RESET);
 
     return OK;
 }

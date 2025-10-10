@@ -15,12 +15,22 @@
  */
 
 #include "aula0301.h"
+#include <limits.h>
 
 ull CalcularTermoSerieFibonacci(us termo) {
+    ull termoMenosUm;
+    ull termoMenosDois;
+
     if (termo <= 1)
         return termo;
 
-    return CalcularTermoSerieFibonacci(termo - 1) + CalcularTermoSerieFibonacci(termo - 2);
+    termoMenosUm = CalcularTermoSerieFibonacci(termo - 1);
+    termoMenosDois = CalcularTermoSerieFibonacci(termo - 2);
+
+    if (termoMenosUm == ULLONG_MAX || termoMenosDois == ULLONG_MAX)
+        return ULLONG_MAX;
+
+    return termoMenosUm + termoMenosDois;
 }
 
  /* $RCSfile$ */
