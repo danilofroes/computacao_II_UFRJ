@@ -13,6 +13,14 @@
  * $Date$
  * $Log$
  */
+ 
+#if defined (__FreeBSD__) && defined (__STRICT_ANSI__)
+  #define __LONG_LONG_SUPPORTED
+#endif
+
+#ifdef __linux__
+  #define _XOPEN_SOURCE 600
+#endif
 
 #include <stdlib.h>
 #include <stdio.h>
