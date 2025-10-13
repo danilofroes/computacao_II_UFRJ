@@ -7,7 +7,7 @@
  * Autor: Danilo Davi Gomes Froes
  *
  * Descricao:
- * 	  --
+ * 	 codigo para exibir o tamanho dos tipos basicos do C combinados com modificadores de sinal e de largura
  *
  * $Author$
  * $Date$
@@ -23,12 +23,15 @@
 #define TAMANHO_LINHA 100
 #define COLUNA_POSICIONAMENTO 91
 
+#define OK 0
+
 void ExibirCemHifens();
 
 void ExibirCemHifens() {
+    unsigned short i;
+
     printf("\n");
     
-    unsigned short i;
     for (i = 0; i < 100; i++) {
         printf("-");
     }
@@ -37,6 +40,7 @@ void ExibirCemHifens() {
 
 void ExibirTituloCentralizado(char *titulo) {
     unsigned short espacosParaCentralizar;
+    unsigned short i;
 
     printf("%s%s", UNDERLINE_WHITE, BLACK_BACKGROUND);
 
@@ -46,7 +50,6 @@ void ExibirTituloCentralizado(char *titulo) {
     else
         espacosParaCentralizar = ((TAMANHO_LINHA - strlen(titulo) - 1) / 2);
         
-    unsigned short i;
     for (i = 0; i < espacosParaCentralizar; i++) {
         printf(" ");
     }
@@ -64,9 +67,11 @@ void ExibirTituloCentralizado(char *titulo) {
 }
 
 void ExibirMensagemTipo(char *nomeTipo, int tamanhoTipo) {
+    unsigned short colunaTipo;
+
     printf("%s%s", BLUE, nomeTipo);
 
-    unsigned short colunaTipo = COLUNA_POSICIONAMENTO - strlen(nomeTipo);
+    colunaTipo = COLUNA_POSICIONAMENTO - strlen(nomeTipo);
 
     printf("%*s", colunaTipo, " ");
     printf("%s%d%s", YELLOW, tamanhoTipo, tamanhoTipo == 1 ? " byte" : " bytes");
@@ -74,7 +79,6 @@ void ExibirMensagemTipo(char *nomeTipo, int tamanhoTipo) {
 }
 
 int main() {
-
     unsigned short tamanhoUnsignedShort = sizeof(unsigned short);
     unsigned short tamanhoUnsignedLong = sizeof(unsigned long);
     unsigned short tamanhoUnsignedLongLong = sizeof(unsigned long long);
@@ -90,6 +94,7 @@ int main() {
     unsigned short tamanhoShortInt = sizeof(short int);
     unsigned short tamanhoLongInt = sizeof(long int);
     unsigned short tamanhoLongLongInt = sizeof(long long int);
+    unsigned short tamanhoLongDouble = sizeof(long double);
 
     ExibirCemHifens();
     ExibirTituloCentralizado("Tamanhos dos Modificadores de Sinal combinados com Modificadores de Largura");
@@ -115,8 +120,9 @@ int main() {
     ExibirMensagemTipo("short int", tamanhoShortInt);
     ExibirMensagemTipo("long int", tamanhoLongInt);
     ExibirMensagemTipo("long long int", tamanhoLongLongInt);
+    ExibirMensagemTipo("long double", tamanhoLongDouble);
 
-    return 0;
+    return OK;
 }
 
  /* $RCSfile$ */

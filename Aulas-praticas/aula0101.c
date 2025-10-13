@@ -16,16 +16,18 @@
 
 #include <stdio.h>
 
-int main() {
-	unsigned int i;
+#define OK 0
 
-	for (i = 0; i < 256; i++) {
-		printf("\e[38;5;%dm%3d", i, i);
+int main() {
+	unsigned int contador;
+
+	for (contador = 0; contador < 256; contador++) {
+		printf("\e[38;5;%dm%3d", contador, contador);
 	}
 
 	printf("\e[0m\n");
 
-	return 0;
+	return OK;
 }
 
 /* $RCSfile$ */

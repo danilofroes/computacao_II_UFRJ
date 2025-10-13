@@ -19,11 +19,21 @@
 
 #include "cores.h"
 
+#define NUMERO_ARGUMENTOS          1
+
+#define OK                         0
+#define NUMERO_ARGUMENTOS_INVALIDO 1
+#define NUMERO_COLUNAS_INVALIDO    2
+
 void ExibirCabecalho(unsigned short);
 void ExibirHifens(unsigned short);
 
 void ExibirCabecalho(unsigned short numeroColunas) {
     unsigned short numeroLinhas;
+    unsigned short i;
+    unsigned short j;
+    unsigned short k;
+    unsigned short digito;
 
     if (numeroColunas >= 1 && numeroColunas <= 9)
         numeroLinhas = 1;
@@ -39,20 +49,17 @@ void ExibirCabecalho(unsigned short numeroColunas) {
 
     printf("%s%s", BLACK, WHITE_BACKGROUND);
 
-    unsigned short i;
     for (i = 0; i < numeroLinhas; i++) {
-        unsigned short j;
-        
         for (j = 0; j < numeroColunas; j++) {
-            unsigned short digito = (j / 10) % 10;
+            digito = (j / 10) % 10;
             
             printf("%u", digito);
         }
         printf("\n");
     }
 
-    for (i = 0; i < numeroColunas; i++) {
-        unsigned short digito = i % 10;
+    for (k = 0; k < numeroColunas; k++) {
+        digito = i % 10;
         
         printf("%u", digito);
     }
@@ -73,25 +80,26 @@ void ExibirHifens(unsigned short numeroHifens) {
 }
 
 int main(int argc, char *argv[]) {
+    unsigned short numeroColunas;
 
-    if (argc != 2) {
+    if (argc != NUMERO_ARGUMENTOS + 1) {
         printf("%sErro: O numero de argumentos passado esta invalido.%s\n", BOLD_HIGH_INTENSITY_RED, COLOR_RESET);
         printf("Deve ser passado o valor do numero de colunas.\n");
-        return 1;
+        exit(NUMERO_ARGUMENTOS_INVALIDO);
     }
 
-    unsigned short numeroColunas = atoi(argv[1]);
+    numeroColunas = atoi(argv[1]);
 
     if (numeroColunas < 1 || numeroColunas > 9999) {
         printf("%sErro: Numero de colunas invalido.%s\n", BOLD_HIGH_INTENSITY_RED, COLOR_RESET);
         printf("O numero de colunas deve estar entre 1 e 9999.\n");
-        return 1;
+        exit(NUMERO_COLUNAS_INVALIDO);
     }
 
     ExibirCabecalho(numeroColunas);
     ExibirHifens(numeroColunas);
 
-    return 0;
+    return OK;
 }
 
 /* $RCSfile$ */
