@@ -25,7 +25,9 @@ typedef enum {
     ok,                     /* sem erros (0) */
     numeroMaximoLinhas,     /* erro do numero maximo de linhas (1) */
     numeroMaximoColunas,    /* erro do numero maximo de colunas (2) */
-    matrizesIncompativeis   /* erro de matrizes incompatíveis (3) */
+    matrizesIncompativeis,  /* erro de matrizes incompatíveis (3) */
+    matrizIndeterminada,    /* erro de matriz indeterminada (4) */
+    erroCalculoFuncao       /* erro no calculo de funcao (5) */
 } 
 tipoErros;
 
@@ -47,6 +49,22 @@ tipoErros ObterMatrizTransposta(unsigned short,                                 
                                 unsigned short,                                               /* numero de colunas da matriz (E) */
                                 long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS],   /* matriz original (E) */
                                 long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS]);  /* matriz transposta (S) */
+
+tipoErros CalcularMenorComplementar(unsigned short,                                               /* ordem da matriz (E) */
+                                    unsigned short,                                               /* linha do elemento (E) */
+                                    unsigned short,                                               /* coluna do elemento (E) */
+                                    long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS],   /* matriz original (E) */
+                                    long double *);                                               /* menor complementar (S) */
+
+tipoErros CalcularComplementoAlgebrico(unsigned short,                                               /* ordem da matriz (E) */
+                                       unsigned short,                                               /* linha do elemento (E) */
+                                       unsigned short,                                               /* coluna do elemento (E) */
+                                       long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS],   /* matriz original (E) */
+                                       long double *);                                               /* complemento algebrico (S) */
+
+tipoErros CalcularDeterminanteMatriz(unsigned short,                                               /* ordem da matriz (E) */
+                                     long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS],   /* matriz original (E) */
+                                     long double *);                                               /* determinante (S) */
 
 #endif
 
