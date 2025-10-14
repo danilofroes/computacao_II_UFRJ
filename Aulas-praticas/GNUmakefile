@@ -57,7 +57,7 @@ LFLAGS = -Wall
 AULA01 = aula0101 aula0102 aula0103 aula0104 aula0105 aula0106
 AULA02 = aula0202a aula0202b aula0202c aula0202d
 AULA03 = aula0302a aula0302b aula0302c aula0302d
-AULA04 = aula0402a aula0402b aula0402c aula0402d aula0404a aula0404b aula0404c aula0404d
+AULA04 = aula0402a aula0402b aula0402c aula0402d aula0404a aula0404b aula0404c aula0404d aula0404e
 
 AULA0101OBJS = aula0101.o
 AULA0102OBJS = aula0102.o
@@ -84,6 +84,7 @@ AULA0404AOBJS = aula0404.o aula0403a.o
 AULA0404BOBJS = aula0404.o aula0403b.o
 AULA0404COBJS = aula0404.o aula0403c.o
 AULA0404DOBJS = aula0404.o aula0403d.o
+AULA0404EOBJS = aula0404.o aula0403e.o
 
 LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o aula0403a.o
 LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o aula0403b.o
@@ -195,6 +196,10 @@ aula0404c: libmatematica-for.a $(AULA0404COBJS)
 
 aula0404d: libmatematica-while.a $(AULA0404DOBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0404DOBJS) -L. -lmatematica-while -lm
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0404e: $(AULA0404EOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0404EOBJS) -lm
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
