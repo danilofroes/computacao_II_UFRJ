@@ -7,7 +7,7 @@
  * Autor: Danilo Davi Gomes Froes
  *
  * Descricao:
- * 	  script para exibir uma matriz
+ * 	  script para multiplicar matrizes
  *
  * $Author$
  * $Date$
@@ -187,7 +187,7 @@ int main(int argc, char *argv[]) {
             printf("%s\nErro ao multiplicar as matrizes.%s\n\n", RED, RESET);
 
         exit(ERRO_EXIBIR_MATRIZ);
-}
+    }
 
     printf("\nMatriz Produto:\n\n");
 

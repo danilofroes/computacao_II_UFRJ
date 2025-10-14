@@ -7,7 +7,7 @@
  * Autor: Danilo Davi Gomes Froes
  *
  * Descricao:
- * 	  funcao para exibir matriz de no maximo 100 colunas e 100 linhas
+ * 	  funcoes para manipulacao de matrizes de no maximo 100 colunas e 100 linhas
  *
  * $Author$
  * $Date$
@@ -19,7 +19,7 @@
 #include "aula0501.h"
 #include "cores.h"
 
-tipoErros ExibirMatriz(unsigned short int numeroLinhas, unsigned short int numeroColunas, long double matriz[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS]) {
+tipoErros ExibirMatriz(unsigned short numeroLinhas, unsigned short numeroColunas, long double matriz[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS]) {
     unsigned short i;
     unsigned short j;
 
@@ -45,7 +45,7 @@ tipoErros ExibirMatriz(unsigned short int numeroLinhas, unsigned short int numer
     return ok;
 }
 
-tipoErros MultiplicarMatrizes(unsigned short int numeroLinhasMatriz1, unsigned short int numeroColunasMatriz1, unsigned short int numeroLinhasMatriz2, unsigned short int numeroColunasMatriz2, long double matriz1[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS], long double matriz2[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS], long double matrizProduto[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS]) {
+tipoErros MultiplicarMatrizes(unsigned short numeroLinhasMatriz1, unsigned short numeroColunasMatriz1, unsigned short numeroLinhasMatriz2, unsigned short numeroColunasMatriz2, long double matriz1[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS], long double matriz2[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS], long double matrizProduto[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS]) {
     unsigned short i;
     unsigned short j;
     unsigned short k;
@@ -65,6 +65,25 @@ tipoErros MultiplicarMatrizes(unsigned short int numeroLinhasMatriz1, unsigned s
             for (k = 0; k < numeroColunasMatriz1; k++) {
                 matrizProduto[i][j] += matriz1[i][k] * matriz2[k][j];
             }
+        }
+    }
+
+    return ok;
+}
+
+tipoErros ObterMatrizTransposta(unsigned short numeroLinhas, unsigned short numeroColunas, long double matrizOriginal[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS], long double matrizTransposta[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS]) {
+    unsigned short i;
+    unsigned short j;
+
+    if (numeroLinhas > NUMERO_MAXIMO_LINHAS)
+        return numeroMaximoLinhas;
+
+    if (numeroColunas > NUMERO_MAXIMO_COLUNAS)
+        return numeroMaximoColunas;
+
+    for (i = 0; i < numeroLinhas; i++) {
+        for (j = 0; j < numeroColunas; j++) {
+            matrizTransposta[j][i] = matrizOriginal[i][j];
         }
     }
 

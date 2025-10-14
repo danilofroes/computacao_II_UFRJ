@@ -7,7 +7,7 @@
  * Autor: Danilo Davi Gomes Froes
  *
  * Descricao:
- * 	  arquivo de definicao da funcao de exibir matriz
+ * 	  arquivo de definicao de funcoes para manipulacao de matrizes de no maximo 100 colunas e 100 linhas
  *
  * $Author$
  * $Date$
@@ -42,6 +42,11 @@ tipoErros MultiplicarMatrizes(unsigned short,                                   
                               long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS],   /* matriz 1 a ser multiplicada (E) */
                               long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS],   /* matriz 2 a ser multiplicada (E) */
                               long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS]);  /* matriz produto (S) */
+
+tipoErros ObterMatrizTransposta(unsigned short,                                               /* numero de linhas da matriz (E) */
+                                unsigned short,                                               /* numero de colunas da matriz (E) */
+                                long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS],   /* matriz original (E) */
+                                long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS]);  /* matriz transposta (S) */
 
 #endif
 
