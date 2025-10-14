@@ -24,7 +24,8 @@
 typedef enum {
     ok,                     /* sem erros (0) */
     numeroMaximoLinhas,     /* erro do numero maximo de linhas (1) */
-    numeroMaximoColunas     /* erro do numero maximo de colunas (2) */
+    numeroMaximoColunas,    /* erro do numero maximo de colunas (2) */
+    matrizesIncompativeis   /* erro de matrizes incompatíveis (3) */
 } 
 tipoErros;
 
@@ -33,6 +34,14 @@ tipoErros ExibirMatriz(unsigned short,                                          
                        long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS]);  /* matriz a ser exibida (E) */
                                                                                      /* primeira dimensao - linha */
                                                                                      /* segunda dimensao - coluna */
+
+tipoErros MultiplicarMatrizes(unsigned short,                                               /* numero de linhas da matriz 1 (E) */
+                              unsigned short,                                               /* numero de colunas da matriz 1 (E) */
+                              unsigned short,                                               /* numero de linhas da matriz 2 (E) */
+                              unsigned short,                                               /* numero de colunas da matriz 2 (E) */
+                              long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS],   /* matriz 1 a ser multiplicada (E) */
+                              long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS],   /* matriz 2 a ser multiplicada (E) */
+                              long double [NUMERO_MAXIMO_LINHAS] [NUMERO_MAXIMO_COLUNAS]);  /* matriz produto (S) */
 
 #endif
 

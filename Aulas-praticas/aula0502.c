@@ -78,11 +78,6 @@ int main(int argc, char *argv[]) {
         exit(ARGUMENTO_COM_CARACTERE_INVALIDO);
     }
 
-    if (*validacaoLinhas != EOS) {
-        printf("%s\nO argumento contem um caractere invalido (%c).%s\n\n", RED, *validacaoLinhas, RESET);
-        exit(ARGUMENTO_COM_CARACTERE_INVALIDO);
-    }
-
     if ((unsigned int)linhas * colunas != (unsigned int)(argc - 3)) {
         printf("%s\nO numero de elementos da matriz (%d) esta incorreto. Esperado: %d.%s\n\n", RED, argc - 3, linhas * colunas, RESET);
         exit(NUMERO_ELEMENTOS_INVALIDO);
@@ -109,10 +104,14 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    if (ExibirMatriz(linhas, colunas, matriz) != OK ) {
+    printf("\n");
+
+    if (ExibirMatriz(linhas, colunas, matriz) != ok) {
         printf("%s\nErro ao exibir a matriz.%s\n\n", RED, RESET);
         exit(ERRO_EXIBIR_MATRIZ);
     }
+
+    printf("\n");
 
     return OK;
 }

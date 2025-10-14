@@ -45,4 +45,30 @@ tipoErros ExibirMatriz(unsigned short int numeroLinhas, unsigned short int numer
     return ok;
 }
 
+tipoErros MultiplicarMatrizes(unsigned short int numeroLinhasMatriz1, unsigned short int numeroColunasMatriz1, unsigned short int numeroLinhasMatriz2, unsigned short int numeroColunasMatriz2, long double matriz1[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS], long double matriz2[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS], long double matrizProduto[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS]) {
+    unsigned short i;
+    unsigned short j;
+    unsigned short k;
+
+    if (numeroLinhasMatriz1 > NUMERO_MAXIMO_LINHAS || numeroLinhasMatriz2 > NUMERO_MAXIMO_LINHAS)
+        return numeroMaximoLinhas;
+
+    if (numeroColunasMatriz1 > NUMERO_MAXIMO_COLUNAS || numeroColunasMatriz2 > NUMERO_MAXIMO_COLUNAS)
+        return numeroMaximoColunas;
+
+    if (numeroColunasMatriz1 != numeroLinhasMatriz2)
+        return matrizesIncompativeis;
+
+    for (i = 0; i < numeroLinhasMatriz1; i++) {
+        for (j = 0; j < numeroColunasMatriz2; j++) {
+            matrizProduto[i][j] = 0;
+            for (k = 0; k < numeroColunasMatriz1; k++) {
+                matrizProduto[i][j] += matriz1[i][k] * matriz2[k][j];
+            }
+        }
+    }
+
+    return ok;
+}
+
  /* $RCSfile$ */
