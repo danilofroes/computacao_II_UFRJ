@@ -7,7 +7,7 @@
  * Autor: Danilo Davi Gomes Froes
  *
  * Descricao:
- * 	  funcao para calcular serie harmonica alternada com for
+ * 	  funcao para calcular serie harmonica alternada com while
  *
  * $Author$
  * $Date$
@@ -28,11 +28,14 @@ float CalcularSerieHarmonicaAlternada(unsigned short int termo) {
         return 1.0;
 
     somaTotal = 0.0;
+    contador = 1;
 
-    for (contador = 1; contador <= termo; contador++) {
+    while (contador <= termo) {
         termoAtual = CalcularExponencial(-1, contador - 1) / CalcularExponencial(contador, contador);
         
         somaTotal += termoAtual;
+
+        contador++;
     }
 
     return somaTotal;
