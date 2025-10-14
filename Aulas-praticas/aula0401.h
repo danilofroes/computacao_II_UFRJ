@@ -19,6 +19,8 @@
 
 long double CalcularExponencial(double, int);
 
+float CalcularSerieHarmonicaAlternada(unsigned short int);
+
 #endif
 
- /* $RCSfile$ */
+ /* $RCSfile: aula0401.h,v $ */
