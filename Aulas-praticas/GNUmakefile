@@ -58,7 +58,7 @@ AULA01 = aula0101 aula0102 aula0103 aula0104 aula0105 aula0106
 AULA02 = aula0202a aula0202b aula0202c aula0202d
 AULA03 = aula0302a aula0302b aula0302c aula0302d
 AULA04 = aula0402a aula0402b aula0402c aula0402d aula0404a aula0404b aula0404c aula0404d aula0404e
-AULA05 = aula0502 aula0503 aula0504 aula0505
+AULA05 = aula0502 aula0503 aula0504 aula0505 aula0506
 
 AULA0101OBJS = aula0101.o
 AULA0102OBJS = aula0102.o
@@ -91,6 +91,7 @@ AULA0502OBJS = aula0502.o aula0501.o
 AULA0503OBJS = aula0503.o aula0501.o
 AULA0504OBJS = aula0504.o aula0501.o
 AULA0505OBJS = aula0505.o aula0501.o
+AULA0506OBJS = aula0506.o aula0501.o
 
 LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o aula0403a.o
 LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o aula0403b.o
@@ -227,6 +228,10 @@ aula0504: $(AULA0504OBJS)
 
 aula0505: $(AULA0505OBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0505OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0506: $(AULA0506OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0506OBJS)
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
 libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
