@@ -106,6 +106,13 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    printf("\nMatriz Original:\n\n");
+
+    if (ExibirMatriz(colunas, linhas, matriz) != ok) {
+        printf("%s\nErro ao exibir a matriz.%s\n\n", RED, RESET);
+        exit(ERRO_EXIBIR_MATRIZ);
+    }
+
     resultadoMatrizTransposta = ObterMatrizTransposta(linhas, colunas, matriz, matrizTransposta);
 
     if (resultadoMatrizTransposta != ok) {

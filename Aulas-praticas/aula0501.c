@@ -94,7 +94,7 @@ tipoErros CalcularDeterminanteMatriz(unsigned short ordemMatriz, long double mat
     unsigned short i;
     long double resultado;
     long double complementoAlgebrico;
-    tipoErros codigoErro;
+    tipoErros calculoComplemento;
 
     if (ordemMatriz > NUMERO_MAXIMO_LINHAS)
         return numeroMaximoLinhas;
@@ -135,7 +135,9 @@ tipoErros CalcularDeterminanteMatriz(unsigned short ordemMatriz, long double mat
     resultado = 0;
 
     for (i = 0; i < ordemMatriz; i++) {
-        CalcularComplementoAlgebrico(ordemMatriz, 0, i, matrizOriginal, &complementoAlgebrico);
+        calculoComplemento = CalcularComplementoAlgebrico(ordemMatriz, 0, i, matrizOriginal, &complementoAlgebrico);
+        if (calculoComplemento != ok)
+            return erroCalculoFuncao;
 
         resultado += matrizOriginal[0][i] * complementoAlgebrico;
     }
@@ -151,6 +153,7 @@ tipoErros CalcularMenorComplementar(unsigned short ordemMatriz, unsigned short l
     unsigned short k;
     unsigned short l;
     long double matrizMenorComplementar[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS];
+    tipoErros calculoDeterminante;
 
     if (ordemMatriz > NUMERO_MAXIMO_LINHAS)
         return numeroMaximoLinhas;
@@ -162,42 +165,41 @@ tipoErros CalcularMenorComplementar(unsigned short ordemMatriz, unsigned short l
         return matrizIndeterminada;
 
     k = 0;
+    l = 0;
 
     for (i = 0; i < ordemMatriz; i++) {
-        if (i != linha)
+        if (i != linha) {
             l = 0;
 
-        for (j = 0; j < ordemMatriz; j++) {
-            if (j != coluna) {
-                matrizMenorComplementar[k][l] = matrizOriginal[i][j];
-                l++;
+            for (j = 0; j < ordemMatriz; j++) {
+                if (j != coluna) {
+                    matrizMenorComplementar[k][l] = matrizOriginal[i][j];
+                    l++;
+                }
             }
+            k++;
         }
-
-        k++;
     }
+
+    calculoDeterminante = CalcularDeterminanteMatriz(ordemMatriz - 1, matrizMenorComplementar, menorComplementar);
+    if (calculoDeterminante != ok)
+        return erroCalculoFuncao;
 
     return ok;
 }
 
 tipoErros CalcularComplementoAlgebrico (unsigned short ordemMatriz, unsigned short linha, unsigned short coluna, long double matrizOriginal[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS], long double *complementoAlgebrico) {
-    long double menorComplementar;
-    long double matrizMenor[NUMERO_MAXIMO_LINHAS][NUMERO_MAXIMO_COLUNAS];
+    long double determinanteMenor;
     tipoErros calculoMenorComplementar;
-    tipoErros calculoDeterminante;
     long double sinal;
 
-    calculoMenorComplementar = CalcularMenorComplementar(ordemMatriz, linha, coluna, matrizOriginal, matrizMenor);
+    calculoMenorComplementar = CalcularMenorComplementar(ordemMatriz, linha, coluna, matrizOriginal, &determinanteMenor);
     if (calculoMenorComplementar != ok)
         return erroCalculoFuncao;
 
-    calculoDeterminante = CalcularDeterminanteMatriz(ordemMatriz - 1, matrizMenor, &menorComplementar);
-    if (calculoDeterminante != ok)
-        return erroCalculoFuncao;
+    sinal = ((linha + coluna) % 2 == 0) ? 1.0L : -1.0L;
 
-    sinal = ((linha + coluna) % 2 == 0) ? 1.0 : -1.0;
-
-    *complementoAlgebrico = sinal * menorComplementar;
+    *complementoAlgebrico = sinal * determinanteMenor;
 
     return ok;
 }

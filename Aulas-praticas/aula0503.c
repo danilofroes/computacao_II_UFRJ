@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
     tipoErros resultadoMultiplicacao;
 
     if (argc < 5) {
-        printf("%s\nUso: %s <linhas> <colunas> <elementos...> %s\n\n", RED, argv[0], RESET);
+        printf("%s\nUso: %s <linhas_matriz_1> <colunas_matriz_1> <linhas_matriz_2> <colunas_matriz_2> <elementos_matriz_1...> <elementos_matriz_2...> %s\n\n", RED, argv[0], RESET);
         exit(NUMERO_ARGUMENTOS_INVALIDO); 
     }
 

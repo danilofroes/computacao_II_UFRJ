@@ -44,17 +44,12 @@ int main(int argc, char *argv[]) {
     unsigned short i;
     unsigned short j;
     unsigned short k;
-    long double *determinante;
+    long double determinante;
     tipoErros resultadoDeterminante;
 
     if (argc < 2) {
         printf("%s\nUso: %s <ordem> <elementos...> %s\n\n", RED, argv[0], RESET);
         exit(NUMERO_ARGUMENTOS_INVALIDO); 
-    }
-
-    if ((unsigned int)ordem * ordem != (unsigned int)(argc - 2)) {
-        printf("%s\nO numero de elementos da matriz (%d) esta incorreto. Esperado: %d.%s\n\n", RED, argc - 2, ordem * ordem, RESET);
-        exit(NUMERO_ARGUMENTOS_INVALIDO);
     }
 
     errno = 0;
@@ -68,6 +63,11 @@ int main(int argc, char *argv[]) {
     if (*validacaoOrdem != EOS) {
         printf("%s\nO argumento contem um caractere invalido (%c).%s\n\n", RED, *validacaoOrdem, RESET);
         exit(ARGUMENTO_COM_CARACTERE_INVALIDO);
+    }
+
+    if ((unsigned int)ordem * ordem != (unsigned int)(argc - 2)) {
+        printf("%s\nO numero de elementos da matriz (%d) esta incorreto. Esperado: %d.%s\n\n", RED, argc - 2, ordem * ordem, RESET);
+        exit(NUMERO_ARGUMENTOS_INVALIDO);
     }
 
     k = 2;
@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
         exit(ERRO_EXIBIR_MATRIZ);
     }
 
-    printf("%sDeterminante: %.5Lf%s\n\n", BOLD_YELLOW, *determinante, RESET);
+    printf("%sDeterminante: %.5Lf%s\n\n", BOLD_YELLOW, determinante, RESET);
 
     return OK;
 }
