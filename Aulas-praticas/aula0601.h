@@ -17,6 +17,8 @@
 #ifndef _AULA0601_
 #define _AULA0601_ "@(#)aula0601.h $Revision$"
 
+typedef unsigned char byte;
+
 typedef enum {
     mastercard,
     visa13,
