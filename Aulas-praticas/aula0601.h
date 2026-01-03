@@ -7,7 +7,7 @@
  * Autor: Danilo Davi Gomes Froes
  *
  * Descricao:
- * 	  --
+ * Definicoes de tipos e prototipos para manipulacao de numeros de cartao de credito.
  *
  * $Author$
  * $Date$
@@ -19,23 +19,25 @@
 
 typedef unsigned char byte;
 
-typedef enum {
-    mastercard,
-    visa13,
-    visa14,
-    visa15,
-    visa16,
-    amex,
-    diner
-}
-tipoOperadora;
-
-typedef enum {
-    ok
+typedef enum
+{
+  ok,
+  erroComprimentoInvalido
 } tipoCodigosRetorno;
+
+typedef enum
+{
+  mastercard,
+  visa13,
+  visa14,
+  visa15,
+  visa16,
+  amex,
+  diner
+} tipoOperadora;
 
 tipoCodigosRetorno GerarDigitoVerificadorCartaoCredito(byte [] /* entrada/saida */);
 
 #endif
 
- /* $RCSfile$ */
+/* $RCSfile$ */
