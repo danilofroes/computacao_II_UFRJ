@@ -52,4 +52,35 @@ tipoCodigosRetorno GerarDigitoVerificadorCartaoCredito (byte cartao[] /* entrada
     return ok;
 }
 
+tipoCodigosRetorno ValidarCartaoCredito (byte cartao[] /* entrada */) {
+    unsigned short tamanho = 0;
+    byte digitoVerificadorFornecido;
+    byte digitoVerificadorCalculado;
+    tipoCodigosRetorno codigoRetorno;
+
+    while (cartao[tamanho] != 255)
+        tamanho++;
+
+    if (tamanho < 13 || tamanho > 16)
+        return erroComprimentoInvalido;
+
+    digitoVerificadorFornecido = cartao[tamanho - 1];
+
+    cartao[tamanho - 1] = 255;
+
+    codigoRetorno = GerarDigitoVerificadorCartaoCredito (cartao);
+
+    if (codigoRetorno != ok)
+        return codigoRetorno;
+
+    digitoVerificadorCalculado = cartao[tamanho - 1];
+
+    if (digitoVerificadorFornecido == digitoVerificadorCalculado) {
+        cartao[tamanho] = 255; 
+        return ok;
+    }
+    
+    return erroCartaoInvalido;
+}
+
 /* $RCSfile$ */

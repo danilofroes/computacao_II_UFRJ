@@ -22,7 +22,8 @@ typedef unsigned char byte;
 typedef enum
 {
   ok,
-  erroComprimentoInvalido
+  erroComprimentoInvalido,
+  erroCartaoInvalido
 } tipoCodigosRetorno;
 
 typedef enum
@@ -37,6 +38,8 @@ typedef enum
 } tipoOperadora;
 
 tipoCodigosRetorno GerarDigitoVerificadorCartaoCredito(byte [] /* entrada/saida */);
+
+tipoCodigosRetorno ValidarCartaoCredito(byte[] /* entrada */);
 
 #endif
 
