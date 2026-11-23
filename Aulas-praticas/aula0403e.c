@@ -14,6 +14,8 @@
  * $Log$
  */
  
+#include <math.h>
+
 #include "aula0401.h"
 
 float CalcularSerieHarmonicaAlternada(unsigned short int termo) {
@@ -30,7 +32,7 @@ float CalcularSerieHarmonicaAlternada(unsigned short int termo) {
     somaTotal = 0.0;
 
     for (contador = 1; contador <= termo; contador++) {
-        termoAtual = powf(-1, contador - 1) / powf(contador, contador);
+        termoAtual = pow(-1, contador - 1) / pow(contador, contador);
         
         somaTotal += termoAtual;
     }
