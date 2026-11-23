@@ -124,13 +124,6 @@ tipoErros ConverterArquivoFormatoDosParaFormatoUnix (char *nomeArquivoOriginal /
     return ConverterArquivo (nomeArquivoOriginal, nomeArquivoConvertido, dosParaUnix);
 }
 
-/*
- * Converte o arquivo original para o sentido desejado.
- *
- * Se o nome do arquivo convertido nao for informado, a conversao e realizada em um arquivo temporario criado pela funcao mkstemp. Neste caso, ao final
- * de uma conversao bem sucedida, o arquivo original e renomeado com o acrescimo da extensao ".backup-AAAAMMDD_hhmmss" e o arquivo temporario passa a
- * ocupar o nome do arquivo original.
- */
 static tipoErros ConverterArquivo (char *nomeArquivoOriginal /* entrada */, char *nomeArquivoConvertido /* entrada */, tipoSentidoConversao sentido /* entrada */) {
     FILE *arquivoOriginal;
     FILE *arquivoConvertido;
@@ -279,10 +272,6 @@ static tipoErros SubstituirArquivoOriginal (char *nomeArquivoOriginal /* entrada
     strcat (nomeArquivoBackup, SUFIXO_ARQUIVO_BACKUP);
     strcat (nomeArquivoBackup, dataHora);
 
-    /*
-     * Duas conversoes do mesmo arquivo no mesmo segundo produzem o mesmo nome de backup. A remocao previa garante o mesmo comportamento nos tres
-     * sistemas operacionais, ja que o rename do POSIX substitui silenciosamente o arquivo de destino, enquanto o do Windows falha.
-     */
     remove (nomeArquivoBackup);
 
     /* o arquivo original e preservado sob o nome de backup */

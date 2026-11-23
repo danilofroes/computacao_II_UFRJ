@@ -5,7 +5,7 @@
 # Departamento de Eletronica e de Computacao
 # EEL270 - Computacao II - Turma 2025/2
 # Prof. Marcelo Luiz Drumond Lanza
-# Autor: Danilo Davi Gomes Fróes
+# Autor: Danilo Davi Gomes Froes
 #
 # Descricao:
 #   Arquivo de dependencias especifico para o FreeBSD.
@@ -53,7 +53,10 @@ AULA02 = aula0202a aula0202b aula0202c aula0202d
 AULA03 = aula0302a aula0302b aula0302c aula0302d
 AULA04 = aula0402a aula0402b aula0402c aula0402d aula0404a aula0404b aula0404c aula0404d aula0404e
 AULA05 = aula0502 aula0503 aula0504 aula0505 aula0506 aula0507
-AULA06 = aula0602a
+AULA06 = aula0602a aula0602b aula0603a aula0603b aula0605a aula0605b aula0606a aula0606b aula0607
+AULA07 = aula0702 aula0703 aula0704 aula0705 aula0706 aula0707
+AULA08 = aula0802 aula0803 aula0804 aula0805 aula0806 aula0807 aula0808 aula0809
+AULA09 = aula0902 aula0903 aula0904 aula0905 aula0906 aula0907
 
 AULA0101OBJS = aula0101.o
 AULA0102OBJS = aula0102.o
@@ -90,18 +93,55 @@ AULA0506OBJS = aula0506.o aula0501.o
 AULA0507OBJS = aula0507.o aula0501.o
 
 AULA0602AOBJS = aula0602a.o aula0601.o
+AULA0602BOBJS = aula0602b.o aula0601.o
+AULA0603AOBJS = aula0603a.o aula0601.o
+AULA0603BOBJS = aula0603b.o aula0601.o
+AULA0605AOBJS = aula0605a.o aula0604.o
+AULA0605BOBJS = aula0605b.o aula0604.o
+AULA0606AOBJS = aula0606a.o aula0604.o
+AULA0606BOBJS = aula0606b.o aula0604.o
+AULA0607OBJS = aula0607.o aula0604.o
+
+AULA0702OBJS = aula0702.o
+AULA0703OBJS = aula0703.o
+AULA0704OBJS = aula0704.o
+AULA0705OBJS = aula0705.o
+AULA0706OBJS = aula0706.o
+AULA0707OBJS = aula0707.o
+
+AULA0802OBJS = aula0802.o
+AULA0803OBJS = aula0803.o
+AULA0804OBJS = aula0804.o
+AULA0805OBJS = aula0805.o
+AULA0806OBJS = aula0806.o
+AULA0807OBJS = aula0807.o
+AULA0808OBJS = aula0808.o
+AULA0809OBJS = aula0809.o
+
+AULA0902OBJS = aula0902.o
+AULA0903OBJS = aula0903.o
+AULA0904OBJS = aula0904.o
+AULA0905OBJS = aula0905.o
+AULA0906OBJS = aula0906.o
+AULA0907OBJS = aula0907.o
 
 LIBMATEMATICARECURSAOOBJS = aula0201a.o aula0301a.o aula0401a.o aula0403a.o
 LIBMATEMATICADOWHILEOBJS = aula0201b.o aula0301b.o aula0401b.o aula0403b.o
 LIBMATEMATICAFOROBJS = aula0201c.o aula0301c.o aula0401c.o aula0403c.o
 LIBMATEMATICAWHILEOBJS = aula0201d.o aula0301d.o aula0401d.o aula0403d.o
 LIBMATEMATICAOBJS = aula0501.o
+LIBMONITOROBJS = aula0701.o
+LIBBASEOBJS = aula0801.o
+LIBARQUIVOSOBJS = aula0901.o
 
 LIBMATEMATICA = libmatematica.a
+LIBMONITOR = libmonitor.a
+LIBBASE = libbase.a
+LIBARQUIVOS = libarquivos.a
 
-EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05) $(AULA06)
+EXECS = $(AULA01) $(AULA02) $(AULA03) $(AULA04) $(AULA05) $(AULA06) $(AULA07) $(AULA08) $(AULA09)
 
-LIBS = libmatematica-recursao.a libmatematica-dowhile.a libmatematica-for.a libmatematica-while.a $(LIBMATEMATICA)
+LIBS = libmatematica-recursao.a libmatematica-dowhile.a libmatematica-for.a libmatematica-while.a $(LIBMATEMATICA) $(LIBMONITOR) $(LIBBASE) $(LIBARQUIVOS)
 
 ALL = $(EXECS) $(LIBS)
 
@@ -242,6 +282,124 @@ aula0602a: $(AULA0602AOBJS)
 	$(LD) $(LFLAGS) -o $@ $(AULA0602AOBJS)
 	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
 
+aula0602b: $(AULA0602BOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0602BOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0603a: $(AULA0603AOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0603AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0603b: $(AULA0603BOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0603BOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0605a: $(AULA0605AOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0605AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0605b: $(AULA0605BOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0605BOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0606a: $(AULA0606AOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0606AOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0606b: $(AULA0606BOBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0606BOBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0607: $(AULA0607OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0607OBJS)
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula07: $(AULA07)
+
+aula0702: $(LIBMONITOR) $(AULA0702OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0702OBJS) -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0703: $(LIBMONITOR) $(AULA0703OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0703OBJS) -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0704: $(LIBMONITOR) $(AULA0704OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0704OBJS) -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0705: $(LIBMONITOR) $(AULA0705OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0705OBJS) -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0706: $(LIBMONITOR) $(AULA0706OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0706OBJS) -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0707: $(LIBMONITOR) $(AULA0707OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0707OBJS) -L. -lmonitor
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula08: $(AULA08)
+
+aula0802: $(LIBBASE) $(AULA0802OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0802OBJS) -L. -lbase
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0803: $(LIBBASE) $(AULA0803OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0803OBJS) -L. -lbase
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0804: $(LIBBASE) $(AULA0804OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0804OBJS) -L. -lbase
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0805: $(LIBBASE) $(AULA0805OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0805OBJS) -L. -lbase
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0806: $(LIBBASE) $(AULA0806OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0806OBJS) -L. -lbase
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0807: $(LIBBASE) $(AULA0807OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0807OBJS) -L. -lbase
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0808: $(LIBBASE) $(AULA0808OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0808OBJS) -L. -lbase
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0809: $(LIBBASE) $(AULA0809OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0809OBJS) -L. -lbase
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula09: $(AULA09)
+
+aula0902: $(LIBARQUIVOS) $(AULA0902OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0902OBJS) -L. -larquivos
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0903: $(LIBARQUIVOS) $(AULA0903OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0903OBJS) -L. -larquivos
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0904: $(LIBARQUIVOS) $(AULA0904OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0904OBJS) -L. -larquivos
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0905: $(LIBARQUIVOS) $(AULA0905OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0905OBJS) -L. -larquivos
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0906: $(LIBARQUIVOS) $(AULA0906OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0906OBJS) -L. -larquivos
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
+aula0907: $(LIBARQUIVOS) $(AULA0907OBJS)
+	$(LD) $(LFLAGS) -o $@ $(AULA0907OBJS) -L. -larquivos
+	cp -f $@ $@-$(OS)-$(CC)-$(DIALECT)
+
 libmatematica-recursao.a: $(LIBMATEMATICARECURSAOOBJS)
 	ar -r -c $@ $(LIBMATEMATICARECURSAOOBJS)
 
@@ -256,6 +414,15 @@ libmatematica-while.a: $(LIBMATEMATICAWHILEOBJS)
 
 libmatematica.a: $(LIBMATEMATICAOBJS)
 	ar -r -c $@ $(LIBMATEMATICAOBJS)
+
+libmonitor.a: $(LIBMONITOROBJS)
+	ar -r -c $@ $(LIBMONITOROBJS)
+
+libbase.a: $(LIBBASEOBJS)
+	ar -r -c $@ $(LIBBASEOBJS)
+
+libarquivos.a: $(LIBARQUIVOSOBJS)
+	ar -r -c $@ $(LIBARQUIVOSOBJS)
 
 .PHONY: clean-all clean clean-objs clean-bsd clean-linux clean-gcc clean-clang clean-ansi clean-c89 clean-c90 clean-c99 clean-c11
 
